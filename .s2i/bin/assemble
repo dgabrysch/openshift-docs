@@ -12,6 +12,8 @@ gem install asciidoctor-diagram --version 1.5.16
 echo "---> Installing AsciiBinder ..."
 # gem install ascii_binder --version 0.1.15.1
 gem install ascii_binder
+# gem install rexml 
+gem install rexml
 
 # Move git repository to local working directory
 shopt -s dotglob
