@@ -32,19 +32,6 @@ git checkout main
 # Fixes incompatible character encodings: US-ASCII and UTF-8 error
 export LANG="en_US.UTF-8"
 
-echo "---> AsciiBinder packaging commercial content ..."
-# AsciiBinder uses git to some extent and requires `user.email` to be properly set
-git config user.email "devel@openshift.com"
-# Package assets for commercial site only, without Minishift content
-asciibinder package --site=commercial
-# Move commercial content to its own directory, including commercial specific redirects and 404 page
-
-mkdir commercial_package
-mv _package/commercial commercial_package
-git checkout master
-mkdir commercial_package/commercial/httpd-cfg
-mv .s2i/httpd-cfg/01-commercial.conf commercial_package/commercial/httpd-cfg
-mv 404-commercial.html commercial_package/commercial/404.html
 
 # minishift docs only need to be on 3.x
 
