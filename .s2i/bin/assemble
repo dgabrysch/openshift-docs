@@ -32,25 +32,39 @@ git checkout main
 # Fixes incompatible character encodings: US-ASCII and UTF-8 error
 export LANG="en_US.UTF-8"
 
+echo "---> AsciiBinder packaging commercial content ..."
+# # AsciiBinder uses git to some extent and requires `user.email` to be properly set
+# git config user.email "devel@openshift.com"
+# # Package assets for commercial site only, without Minishift content
+# asciibinder package --site=commercial
+# # Move commercial content to its own directory, including commercial specific redirects and 404 page
+
+# mkdir commercial_package
+# mv _package/commercial commercial_package
+# git checkout master
+# mkdir commercial_package/commercial/httpd-cfg
+# mv .s2i/httpd-cfg/01-commercial.conf commercial_package/commercial/httpd-cfg
+# mv 404-commercial.html commercial_package/commercial/404.html
 
 # minishift docs only need to be on 3.x
 
-git checkout enterprise-3.11
-echo "---> Installing Minishift content ..."
-mkdir minishift
-cd minishift
-if wget http://minishift.io/minishift-adoc.tar ; then
-    tar -xvf minishift-adoc.tar --strip 1
-    cat _topic_map.yml >> ../_topic_map.yml
-    rm minishift-adoc.tar
-    cd ..
-    git add minishift/
-    git commit -am "Minishift build-time commit"
-else
-    echo "WARNING: Could not retrieve minishift-adoc.tar"
-    cd ..
-    rmdir minishift
-fi
+
+# git checkout enterprise-3.11
+# echo "---> Installing Minishift content ..."
+# mkdir minishift
+# cd minishift
+# if wget http://minishift.io/minishift-adoc.tar ; then
+#     tar -xvf minishift-adoc.tar --strip 1
+#     cat _topic_map.yml >> ../_topic_map.yml
+#     rm minishift-adoc.tar
+#     cd ..
+#     git add minishift/
+#     git commit -am "Minishift build-time commit"
+# else
+#     echo "WARNING: Could not retrieve minishift-adoc.tar"
+#     cd ..
+#     rmdir minishift
+# fi
 
 # checking back into master before resuming the packaging of the community content
 git checkout main
