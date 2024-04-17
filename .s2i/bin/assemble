@@ -41,7 +41,7 @@ asciibinder package --site=commercial
 
 mkdir commercial_package
 mv _package/commercial commercial_package
-git checkout main
+git checkout master
 mkdir commercial_package/commercial/httpd-cfg
 mv .s2i/httpd-cfg/01-commercial.conf commercial_package/commercial/httpd-cfg
 mv 404-commercial.html commercial_package/commercial/404.html
