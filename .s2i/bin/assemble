@@ -14,6 +14,8 @@ echo "---> Installing AsciiBinder ..."
 gem install ascii_binder
 # gem install rexml 
 gem install rexml
+# gem install puma     
+gem install puma
 
 # Move git repository to local working directory
 shopt -s dotglob
